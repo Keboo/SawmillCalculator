@@ -8,7 +8,7 @@
         <local:BladeEdgeValueConverter x:Key="BladeEdgeValueConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <TableView Intent="Settings">
+        <TableView Intent="Settings" >
             <TableSection Title="Side of Blade to Measure for Cut List:">
                 <SwitchCell x:Name="BladeSideCell" OnChanged="BladeSideCell_OnOnChanged" 
                             Text="{Binding On, Source={x:Reference BladeSideCell}, Converter={StaticResource BladeEdgeValueConverter}}" />

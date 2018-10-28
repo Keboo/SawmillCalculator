@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SawmillCalculator
@@ -8,13 +9,21 @@ namespace SawmillCalculator
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CutListPage
     {
-        public ObservableCollection<object> CutList { get; } = new ObservableCollection<object>();
+        private ObservableCollection<string> CutList { get; } = new ObservableCollection<string>();
+
+        private int Kerf => Settings.Kerf ?? 0;
+
+        private int Flitch => Settings.Flitch ?? 0;
+
+        private int Thickness => (Settings.Thickness ?? 9) + 4;
+
+        private int Total => (Settings.Total ?? 5) + 1;
 
         public CutListPage()
         {
             InitializeComponent();
 
-            //CutListItemsControl.ItemsSource = CutList;
+            CutListItemsControl.ItemsSource = CutList;
 
             KerfPicker.SelectedIndexChanged += KerfPickerOnSelectedIndexChanged;
             FlitchPicker.SelectedIndexChanged += FlitchPickerOnSelectedIndexChanged;
@@ -55,19 +64,9 @@ namespace SawmillCalculator
             Calculate();
         }
 
-        private int Kerf => Settings.Kerf ?? 0;
-
-        private int Flitch => Settings.Flitch ?? 0;
-
-        private int Thickness => (Settings.Thickness ?? 9) + 4;
-
-        private int Total => (Settings.Total ?? 5) + 1;
-
         private void Calculate()
         {
             CutList.Clear();
-
-            var index = 1;
 
             // Calculate everything in 32nds of an inch.
             // Add the starting spot.
@@ -80,13 +79,11 @@ namespace SawmillCalculator
                     currentCut += Kerf;
                 }
 
-                CutList.Add(textFrom32nd(currentCut, index).Item1);
+                CutList.Add(TextFrom32nd(currentCut));
                 if (Settings.Edge == BladeEdge.BottomOrRight)
                 {
                     currentCut += Kerf;
                 }
-
-                index++;
             }
 
             // Loop and figure out all the cuts.
@@ -100,8 +97,7 @@ namespace SawmillCalculator
 
                 if (currentCut > 0)
                 {
-                    CutList.Add(textFrom32nd(currentCut, index).Item1);
-                    index++;
+                    CutList.Add(TextFrom32nd(currentCut));
                 }
 
                 if (Settings.Edge == BladeEdge.BottomOrRight)
@@ -109,35 +105,34 @@ namespace SawmillCalculator
                     currentCut += Kerf;
                 }
             }
-
-            //this.cutList.reverse();
         }
 
-        private static (string, string, bool) textFrom32nd(int x, int index)
+        private static string TextFrom32nd(int x)
         {
-            var inches = Math.Floor(x / 32m);
-            var fraction = x - inches * 32;
-            var ftext = "";
+            decimal inches = Math.Floor(x / 32m);
+            decimal fraction = x - inches * 32;
+            
+            var fractionText = "";
             if (fraction > 0)
             {
-                ftext = GetFraction((int)fraction, 32);
+                fractionText = GetFraction((int)fraction, 32);
             }
 
             string result;
-            if (inches > 0 && ftext != "")
+            if (inches > 0 && fractionText != "")
             {
-                result = inches + "-" + ftext + '"';
+                result = inches + "-" + fractionText + '"';
             }
-            else if (inches > 0 && ftext == "")
+            else if (inches > 0 && fractionText == "")
             {
                 result = inches.ToString(CultureInfo.CurrentCulture) + '"';
             }
             else
             {
-                result = ftext + '"';
+                result = fractionText + '"';
             }
 
-            return (measurement: result, id: "Index" + index, @checked: false);
+            return result;
 
             string GetFraction(int numerator, int denominator)
             {
@@ -156,7 +151,12 @@ namespace SawmillCalculator
                     return a;
                 }
             }
+        }
 
+        private void Cell_OnTapped(object sender, EventArgs e)
+        {
+            var switchCell = (SwitchCell) sender;
+            switchCell.On = !switchCell.On;
         }
     }
 }
