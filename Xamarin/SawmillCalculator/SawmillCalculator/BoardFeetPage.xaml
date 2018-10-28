@@ -20,6 +20,11 @@
             }
             ]]>
             </StyleSheet>
+
+            <Style TargetType="Slider">
+                <Setter Property="MaximumTrackColor" Value="LightBlue" />
+                <Setter Property="MinimumTrackColor" Value="Blue" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
