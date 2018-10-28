@@ -4,5 +4,19 @@
              x:Class="SawmillCalculator.App">
     <Application.Resources>
 
+        <ControlTemplate x:Key="FooterPageTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ContentPresenter />
+                <Grid BackgroundColor="Black" Padding="10" Grid.Row="1">
+                    <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
+               Text="{Binding StringFormat='© {0:yyyy} MicaPeak Solutions', Source={x:Static x:DateTime.Today}}">
+                    </Label>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
