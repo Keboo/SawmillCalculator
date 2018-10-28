@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SawmillCalculator"
+             x:Class="SawmillCalculator.BoardFeetPage"
+             Title="Board Feet">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <StyleSheet>
+                <![CDATA[
+            frame {
+                margin: 5;
+                background-color: #396b9e;
+                border-color: #044062;
+                border-thickness: 1;
+                corner-radius: 6;
+                padding: 10,5;
+                color: #fff;
+            }
+            ]]>
+            </StyleSheet>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:BoardFeetViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout x:DataType="local:BoardFeetViewModel" Margin="5">
+            
+            <Label Text="Nominal Thickness in inches:"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Thickness}" Keyboard="Numeric" />
+                <Slider Maximum="24" Minimum="1" Value="{Binding Thickness}" Grid.Column="1" />
+            </Grid>
+
+            <Label Text="Nominal Width in inches:"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Width}" Keyboard="Numeric" />
+                <Slider Maximum="24" Minimum="1" Value="{Binding Width}" Grid.Column="1" />
+            </Grid>
+
+            <Label Text="Length in feet:" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Length}" Keyboard="Numeric" />
+                <Slider Maximum="24" Minimum="1" Value="{Binding Length}" Grid.Column="1" />
+            </Grid>
+
+            <Label Text="Quantity:" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Quantity}" Keyboard="Numeric" />
+                <Slider Maximum="50" Minimum="1" Value="{Binding Quantity}" Grid.Column="1" />
+            </Grid>
+
+            <Frame>
+                <Label Text="{Binding Total, StringFormat='Total Board Feet: {0}'}" />
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

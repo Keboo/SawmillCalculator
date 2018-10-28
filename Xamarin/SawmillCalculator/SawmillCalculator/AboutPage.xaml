@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SawmillCalculator.AboutPage" 
+             Title="About">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" Margin="10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="This application was developed to help saw mill users determine the cuts to make to get the desired board thickness automatically accounting for the kerf. A board feet calculator was also added. Happy sawing." />
+                        <Span Text="&#x0a;&#x0a;"></Span>
+                        <Span Text="If you find any issues with the application or have a feature request please email " />
+                        <Span Text="grant@micapeak.net." TextDecorations="Underline" ForegroundColor="Blue">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EmailTapped"></TapGestureRecognizer>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

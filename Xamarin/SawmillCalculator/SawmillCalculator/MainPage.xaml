@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SawmillCalculator.MainPage"
+             Title="Sawmill Calculator">
+
+    <StackLayout>
+       <TableView Intent="Menu">
+           <TableSection Title="Tools">
+               <ViewCell>
+                   <Button Text="Cut List" Clicked="CutList_OnClicked" />
+               </ViewCell>
+               <ViewCell>
+                   <Button Text="Board Feet" Clicked="BoardFeet_OnClicked" />
+               </ViewCell>
+           </TableSection>
+           <TableSection Title="Options">
+               <ViewCell>
+                   <Button Text="Settings" Clicked="Settings_OnClicked" />
+               </ViewCell>
+               <ViewCell>
+                   <Button Text="About" Clicked="About_OnClicked" />
+               </ViewCell>
+           </TableSection>
+       </TableView>
+    </StackLayout>
+
+</ContentPage>
