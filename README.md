@@ -5,3 +5,4 @@
  - [Enterprise Application Patterns eBook](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/index)
  - [Release Schedule](https://developer.xamarin.com/releases/current/)
  - [Xamarin Samples](https://developer.xamarin.com/samples-all/)
+ - HttpClient [Android](https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/http-stack?tabs=windows), [iOS](https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/http-stack)
