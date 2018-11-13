@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SawmillCalculator.Android",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SawmillCalculator.iOS", "SawmillCalculator\SawmillCalculator.iOS\SawmillCalculator.iOS.csproj", "{6A39E788-38FE-496D-9BC7-5339CE13FFAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SawmillCalculator", "SawmillCalculator\SawmillCalculator\SawmillCalculator.csproj", "{8CA516C2-0DC9-4CDE-BFA8-3EF8932FFFA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SawmillCalculator", "SawmillCalculator\SawmillCalculator\SawmillCalculator.csproj", "{8CA516C2-0DC9-4CDE-BFA8-3EF8932FFFA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
