@@ -81,10 +81,4 @@ namespace SawmillCalculator
             return defaultValue;
         }
     }
-
-    public enum BladeEdge
-    {
-        BottomOrRight,
-        TopOrLeft
-    }
 }
